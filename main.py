@@ -1,5 +1,6 @@
 from objects.point import Point
 from jarvis import jarvis
+from graham import graham
 from graph import print_graph
 
 
@@ -11,7 +12,7 @@ if __name__ == '__main__':
             x, y = map(int, file.readline().split())
             points.append(Point(x, y))
 
-    conv = jarvis(points)
+    conv = graham(points)
 
     with open('output.txt', 'w') as file:
         for point in conv:

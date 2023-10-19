@@ -16,9 +16,9 @@ def print_graph(conv: list[Point], points: list[Point]) -> None:
     points_x = []
     points_y = []
     for point in points:
-        points_x.extend((point.x, np.nan))
-        points_y.extend((point.y, np.nan))
+        points_x.append(point.x)
+        points_y.append(point.y)
 
-    ax.plot(np.array(conv_x), np.array(conv_y), color='b')
-    ax.plot(np.array(points_x), np.array(points_y), marker='o', color='b')
+    ax.plot(np.array(points_x), np.array(points_y), marker='o', color='b', lw=0)
+    ax.plot(np.array(conv_x), np.array(conv_y), marker='o', color='r')
     plt.show()
