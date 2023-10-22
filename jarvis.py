@@ -2,10 +2,6 @@ from objects.point import Point
 from objects.vector import Vector
 
 
-def det(vector1: Vector, vector2: Vector) -> int:
-    return vector1.x * vector2.y - vector1.y * vector2.x
-
-
 def jarvis(points: list[Point]) -> list[Point]:
     remaining_points = set(points)
     conv = list()
@@ -24,15 +20,18 @@ def jarvis(points: list[Point]) -> list[Point]:
 
     while True:
         cur_point = remaining_points.pop()
+        deleted_point = cur_point
         cur_vector = Vector(prev, cur_point)
         for point in remaining_points:
             new_vector = Vector(prev, point)
-            determinant = det(cur_vector, new_vector)
-            if determinant < 0 or (determinant == 0 and abs(cur_vector.x) < abs(new_vector.x)):
-                remaining_points.add(cur_point)
+            rotate_val = cur_vector.rotate(new_vector)
+            if rotate_val < 0 or (rotate_val == 0 and abs(cur_vector.x) < abs(new_vector.x)):
                 cur_point = point
                 cur_vector = new_vector
-                remaining_points.remove(point)
+
+        if cur_point != deleted_point:
+            remaining_points.add(deleted_point)
+            remaining_points.remove(cur_point)
 
         if cur_point == conv[0]:
             break
