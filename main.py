@@ -1,5 +1,6 @@
 from objects.point import Point
 from jarvis import jarvis
+from quick_hull import quick_hull
 from graham import graham
 from graph import print_graph
 
@@ -12,7 +13,7 @@ if __name__ == '__main__':
             x, y = map(int, file.readline().split())
             points.append(Point(x, y))
 
-    conv = graham(points)
+    conv = quick_hull(points)
 
     with open('output.txt', 'w') as file:
         for point in conv:
