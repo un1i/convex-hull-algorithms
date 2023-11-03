@@ -7,15 +7,18 @@ def quick_hull_rec(points: list[Point], min_point: Point, max_point: Point, conv
         return
 
     farthest_point = None
+    farthest_vector = None
     farthest_dist = -1
 
     main_vector = Vector(min_point, max_point)
     for point in points:
         vector = Vector(min_point, point)
         dist = abs(main_vector.rotate(vector))
-        if dist > farthest_dist:
+        if dist > farthest_dist or (dist == farthest_dist and (abs(vector.x) > abs(farthest_vector.x) or
+                                                               abs(vector.y) > abs(farthest_vector.y))):
             farthest_dist = dist
             farthest_point = point
+            farthest_vector = vector
 
     below_points1, above_points1 = divide_points(points, min_point, farthest_point)
     below_points2, above_points2 = divide_points(points, farthest_point, max_point)

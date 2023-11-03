@@ -16,8 +16,13 @@ def graham(points: list[Point]) -> list[Point]:
     sorted_points = sorted(points, key=lambda x: Vector(cur_point, x))
     conv.append(sorted_points[1])
     for i in range(2, len(sorted_points)):
-        while Vector(conv[-2], sorted_points[i]).rotate(Vector(conv[-2], conv[-1])) >= 0:
+        while True:
+            rotate_res = Vector(conv[-2], sorted_points[i]).rotate(Vector(conv[-2], conv[-1]))
+            if rotate_res < 0:
+                break
             conv.pop()
+            if rotate_res == 0:
+                break
         conv.append(sorted_points[i])
 
     return conv

@@ -14,7 +14,6 @@ def jarvis(points: list[Point]) -> list[Point]:
             cur_point = point
 
     conv.append(cur_point)
-    # remaining_points.remove(cur_point)
 
     prev: Point = cur_point
 
@@ -25,7 +24,8 @@ def jarvis(points: list[Point]) -> list[Point]:
         for point in remaining_points:
             new_vector = Vector(prev, point)
             rotate_val = cur_vector.rotate(new_vector)
-            if rotate_val < 0 or (rotate_val == 0 and abs(cur_vector.x) < abs(new_vector.x)):
+            if rotate_val < 0 or (rotate_val == 0 and
+                                  (abs(cur_vector.x) < abs(new_vector.x) or abs(cur_vector.y) < abs(new_vector.y))):
                 cur_point = point
                 cur_vector = new_vector
 

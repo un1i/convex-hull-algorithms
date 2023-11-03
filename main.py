@@ -1,9 +1,6 @@
 from objects.point import Point
-from jarvis import jarvis
-from quick_hull import quick_hull
-from graham import graham
+from algorithms.quick_hull import quick_hull
 from graph import print_graph
-
 
 if __name__ == '__main__':
     points = []

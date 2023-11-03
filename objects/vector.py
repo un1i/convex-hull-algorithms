@@ -10,7 +10,7 @@ class Vector:
 
     def __lt__(self, other):
         rotate_val = self.rotate(other)
-        if rotate_val > 0 or (rotate_val == 0 and self.x < other.x):
+        if rotate_val > 0 or (rotate_val == 0 and (self.x < other.x or (self.x == other.x and abs(self.y) < abs(other.y)))):
             return True
         return False
 
