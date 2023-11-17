@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def print_graph(conv: list[Point], points: list[Point]) -> None:
+def print_conv_graph(conv: list[Point], points: list[Point]) -> None:
     fig, ax = plt.subplots()
     conv_x = []
     conv_y = []

@@ -1,6 +1,6 @@
 from objects.point import Point
 from algorithms.quick_hull import quick_hull
-from graph import print_graph
+from graphs.conv_graph import print_conv_graph
 
 if __name__ == '__main__':
     points = []
@@ -17,7 +17,7 @@ if __name__ == '__main__':
             file.write(str(point))
             file.write('\n')
 
-    print_graph(conv, points)
+    print_conv_graph(conv, points)
 
 
 
